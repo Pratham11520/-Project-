@@ -1,42 +1,48 @@
+# SketchSense — Drawing Classifier 🖍️
 
-# SketchSense - A Drawing Classifier 🖍
+SketchSense is a machine-learning project that classifies drawings into predefined
+categories. It is designed as an educational project for exploring and comparing
+several classification algorithms.
 
-Welcome to the Drawing Classifier ML project! This repository contains a machine learning model designed to classify sketches into predefined categories. It's a perfect tool for educational purposes, learning how different clasification algorithms work.
+## Classification algorithms
 
-## Classification Algos used 🗄
-
-- Linear SVC (Support Vector Machine)
-- K Neighbours Classifier
+- Linear SVC
+- K-Nearest Neighbors
 - Logistic Regression
-- Decision Tree Classifier
-- Random Forest Classifier
+- Decision Tree
+- Random Forest
 - Gaussian Naive Bayes
-- Multi-layer Perceptron Classifier
+- Multi-layer Perceptron
 
-## Features ✨
+## Features
 
-- **Scikit-learn**: Scikit-learn is a Python module for machine learning built on top of SciPy. It can be used to add more ML algorithms like regression, tensor etc. as per required by user.
+- A Tkinter-based interface for working with drawings
+- Pre-trained models for sketch classification
+- Scikit-learn-based experimentation with multiple classifiers
 
-- **Tk-inter UI**: Includes models that have been trained on a variety of sketch datasets, offering robust classification
+## Installation
 
-- For other python libraries used check requirements.txt file
+1. Clone this repository:
 
-## Installation 🛠️
-
-To get started with Drawing Classifier, follow these steps:
-
-1. Clone the repository:
    ```bash
-   git clone https://github.com/aapoorvv/SketchSense
-   cd SketchSense
+   git clone https://github.com/Pratham11520/-Project-.git
+   cd -Project-
+   ```
 
-2. Install the required dependencies:
+2. Create and activate a virtual environment (recommended).
+
+3. Install the dependencies:
+
    ```bash
    pip install -r requirements.txt
-   
-## Usage 🔎
-1. Run the classifier GUI:
+   ```
+
+## Usage
+
+Run the classifier GUI from the repository root:
+
 ```bash
 python main.py
 ```
-2. Use the GUI to upload a drawing and the model will classify it.
+
+Use the interface to provide a drawing and view the predicted category.
