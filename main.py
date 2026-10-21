@@ -54,6 +54,13 @@ class DrawingClassifier:
         msg.withdraw()
 
         self.proj_name = simpledialog.askstring("Project Name", "Please enter your project name down below!", parent=msg)
+        if not self.proj_name:
+            tkinter.messagebox.showerror(
+                "SketchSense", "A project name is required.", parent=msg
+            )
+            msg.destroy()
+            raise SystemExit
+
         if os.path.exists(self.proj_name):
             with open(f"{self.proj_name}/{self.proj_name}_data.pickle", "rb") as f:
                 data = pickle.load(f)
@@ -69,6 +76,13 @@ class DrawingClassifier:
             self.class1 = simpledialog.askstring("Class 1", "What is the first class called?", parent=msg)
             self.class2 = simpledialog.askstring("Class 2", "What is the second class called?", parent=msg)
             self.class3 = simpledialog.askstring("Class 3", "What is the third class called?", parent=msg)
+
+            if not all((self.class1, self.class2, self.class3)):
+                tkinter.messagebox.showerror(
+                    "SketchSense", "All three class names are required.", parent=msg
+                )
+                msg.destroy()
+                raise SystemExit
 
             self.class1_counter = 1
             self.class2_counter = 1
