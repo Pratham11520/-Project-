@@ -260,12 +260,18 @@ class DrawingClassifier:
 
     def save_model(self):
         file_path = filedialog.asksaveasfilename(defaultextension="pickle")
+        if not file_path:
+            return
+
         with open(file_path, "wb") as f:
             pickle.dump(self.clf, f)
         tkinter.messagebox.showinfo("SketchSense", "Model successfully saved!", parent=self.root)
 
     def load_model(self):
         file_path = filedialog.askopenfilename()
+        if not file_path:
+            return
+
         with open(file_path, "rb") as f:
             self.clf = pickle.load(f)
         tkinter.messagebox.showinfo("SketchSense", "Model successfully loaded!", parent=self.root)
