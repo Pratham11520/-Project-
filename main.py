@@ -198,6 +198,23 @@ class DrawingClassifier:
         self.draw.rectangle([0, 0, 1000, 1000], fill="white")
 
     def train_model(self):
+        sample_counts = {
+            self.class1: self.class1_counter - 1,
+            self.class2: self.class2_counter - 1,
+            self.class3: self.class3_counter - 1,
+        }
+        empty_classes = [
+            class_name for class_name, count in sample_counts.items() if count == 0
+        ]
+        if empty_classes:
+            tkinter.messagebox.showerror(
+                "SketchSense",
+                "Add at least one drawing for each class before training: "
+                + ", ".join(empty_classes),
+                parent=self.root,
+            )
+            return
+
         img_list = np.array([])
         class_list = np.array([])
 
