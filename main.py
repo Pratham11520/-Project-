@@ -13,6 +13,7 @@ import cv2 as cv
 import numpy as np
 
 from sklearn.svm import LinearSVC
+from sklearn.exceptions import NotFittedError
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -249,7 +250,15 @@ class DrawingClassifier:
 
         img = cv.imread("predictshape.png")[:, :, 0]
         img = img.reshape(2500)
-        prediction = self.clf.predict([img])
+        try:
+            prediction = self.clf.predict([img])
+        except NotFittedError:
+            tkinter.messagebox.showerror(
+                "SketchSense",
+                "Train or load a model before making a prediction.",
+                parent=self.root,
+            )
+            return
         if prediction[0] == 1:
             tkinter.messagebox.showinfo("SketchSense", f"The drawing is probably a {self.class1}", parent=self.root)
         elif prediction[0] == 2:
