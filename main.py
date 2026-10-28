@@ -285,7 +285,10 @@ class DrawingClassifier:
         self.status_label.config(text=f"Current Model: {type(self.clf).__name__}")
 
     def save_model(self):
-        file_path = filedialog.asksaveasfilename(defaultextension="pickle")
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".pickle",
+            filetypes=[("SketchSense model", "*.pickle"), ("All files", "*.*")],
+        )
         if not file_path:
             return
 
@@ -294,7 +297,9 @@ class DrawingClassifier:
         tkinter.messagebox.showinfo("SketchSense", "Model successfully saved!", parent=self.root)
 
     def load_model(self):
-        file_path = filedialog.askopenfilename()
+        file_path = filedialog.askopenfilename(
+            filetypes=[("SketchSense model", "*.pickle"), ("All files", "*.*")]
+        )
         if not file_path:
             return
 
